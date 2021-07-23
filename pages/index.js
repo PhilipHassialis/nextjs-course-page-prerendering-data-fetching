@@ -1,15 +1,23 @@
-import styles from '../styles/Home.module.css'
 
-const HomePage = () => {
+const HomePage = (props) => {
+
+  const { products } = props;
+
   return (
-    <div className={styles.container}>
+    <div >
       <ul>
-        <li>Product 1</li>
-        <li>Product 2</li>
-        <li>Product 3</li>
+        {products.map(prod => <li key={prod.id}>{prod.title}</li>)}
       </ul>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      products: [{ id: "prod1", title: "Product One" }]
+    }
+  };
 }
 
 export default HomePage;
