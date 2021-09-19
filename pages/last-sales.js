@@ -5,8 +5,11 @@ const LastSalesPage = () => {
     const [sales, setSales] = useState();
     // const [isLoading, setIsLoading] = useState(false);
 
+    const fetcher = (url) => fetch(url).then((r) => r.json());
+
     const { data, error } = useSWR(
-        "https://page-prerendering-data-fetch-default-rtdb.firebaseio.com/sales.json"
+        "https://page-prerendering-data-fetch-default-rtdb.firebaseio.com/sales.json",
+        fetcher
     );
 
     useEffect(() => {
